@@ -1,0 +1,8 @@
+﻿  Buzz_Light_Year.cpp
+d:\files\development\projects\visual studio 2013\projects\graphics_buzz_lightyear\libraries\model_3ds\include\texturebuilder.h(27): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+d:\files\development\projects\visual studio 2013\projects\graphics_buzz_lightyear\libraries\model_3ds\include\texturebuilder.h(28): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+d:\files\development\projects\visual studio 2013\projects\graphics_buzz_lightyear\graphics_buzz_lightyear\buzz_light_year.cpp(575): warning C4018: '<' : signed/unsigned mismatch
+d:\files\development\projects\visual studio 2013\projects\graphics_buzz_lightyear\graphics_buzz_lightyear\buzz_light_year.cpp(1070): warning C4554: '&' : check operator precedence for possible error; use parentheses to clarify precedence
+d:\files\development\projects\visual studio 2013\projects\graphics_buzz_lightyear\graphics_buzz_lightyear\buzz_light_year.cpp(1072): warning C4554: '&' : check operator precedence for possible error; use parentheses to clarify precedence
+d:\files\development\projects\visual studio 2013\projects\graphics_buzz_lightyear\graphics_buzz_lightyear\buzz_light_year.cpp(1570): warning C4309: '=' : truncation of constant value
+  Graphics_Buzz_LightYear.vcxproj -> D:\Files\Development\Projects\Visual Studio 2013\Projects\Graphics_Buzz_LightYear\Graphics_Buzz_LightYear\Debug\Graphics_Buzz_LightYear.exe

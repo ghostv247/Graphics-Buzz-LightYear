@@ -1,0 +1,112 @@
+# Blender MTL File: 'Flyzurg (1).blend'
+# Material Count: 10
+
+newmtl Material.002
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.012206 0.000140
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Ahmed\Downloads\Nintendo 64 - Toy Story 2 Buzz Lightyear to the Rescue - Flying Zurg Robot\Tex_0050_0.png
+
+newmtl Material.002_Tex_0051_0.png
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.012206 0.000140
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Ahmed\Downloads\Nintendo 64 - Toy Story 2 Buzz Lightyear to the Rescue - Flying Zurg Robot\Tex_0051_0.png
+
+newmtl Material.002_Tex_0053_0.png
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.012206 0.000140
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Ahmed\Downloads\Nintendo 64 - Toy Story 2 Buzz Lightyear to the Rescue - Flying Zurg Robot\Tex_0053_0.png
+
+newmtl Material.003
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.799987 0.799987 0.799987
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Ahmed\Downloads\Nintendo 64 - Toy Story 2 Buzz Lightyear to the Rescue - Flying Zurg Robot\Tex_0050_0.png
+
+newmtl Material.004
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.061264 0.061264 0.061264
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Ahmed\Downloads\Nintendo 64 - Toy Story 2 Buzz Lightyear to the Rescue - Flying Zurg Robot\Tex_0053_0.png
+
+newmtl Material.005
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.054529 0.031529 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Ahmed\Downloads\Nintendo 64 - Toy Story 2 Buzz Lightyear to the Rescue - Flying Zurg Robot\Tex_0050_0.png
+
+newmtl Material.005_Tex_0051_0.png
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.054529 0.031529 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Ahmed\Downloads\Nintendo 64 - Toy Story 2 Buzz Lightyear to the Rescue - Flying Zurg Robot\Tex_0051_0.png
+
+newmtl Material.005_Tex_0053_0.png
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.054529 0.031529 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Ahmed\Downloads\Nintendo 64 - Toy Story 2 Buzz Lightyear to the Rescue - Flying Zurg Robot\Tex_0053_0.png
+
+newmtl fz50
+Ns 92.156863
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Ahmed\Downloads\Nintendo 64 - Toy Story 2 Buzz Lightyear to the Rescue - Flying Zurg Robot\Tex_0050_0.png
+
+newmtl fz53
+Ns 92.156863
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Ahmed\Downloads\Nintendo 64 - Toy Story 2 Buzz Lightyear to the Rescue - Flying Zurg Robot\Tex_0053_0.png
