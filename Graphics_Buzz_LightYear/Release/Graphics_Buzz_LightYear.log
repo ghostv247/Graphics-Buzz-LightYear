@@ -1,20 +1,9 @@
-﻿  Buzz_Light_Year.cpp
-d:\files\development\projects\visual studio 2013\projects\graphics_buzz_lightyear\graphics_buzz_lightyear\..\Libraries\Model_3DS\include\TextureBuilder.h(27): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-d:\files\development\projects\visual studio 2013\projects\graphics_buzz_lightyear\graphics_buzz_lightyear\..\Libraries\Model_3DS\include\TextureBuilder.h(28): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-Buzz_Light_Year.cpp(575): warning C4018: '<' : signed/unsigned mismatch
-Buzz_Light_Year.cpp(1070): warning C4554: '&' : check operator precedence for possible error; use parentheses to clarify precedence
-Buzz_Light_Year.cpp(1072): warning C4554: '&' : check operator precedence for possible error; use parentheses to clarify precedence
-Buzz_Light_Year.cpp(1570): warning C4309: '=' : truncation of constant value
-<<<<<<< HEAD
-=======
-  GLTexture.cpp
-  Model_3DS.cpp
-  Model_3DS.cpp(78) : You need to uncomment this if you are using MFC
-  
-  Model_OBJ.c
-Model_OBJ.c(78): warning C4101: 'two_sided' : unreferenced local variable
-Model_OBJ.c(195): warning C4090: '=' : different 'const' qualifiers
->>>>>>> e902dc9... init commit
+﻿  Model_OBJ.c
+Model_OBJ.c(79): warning C4101: 'two_sided' : unreferenced local variable
+Model_OBJ.c(196): warning C4090: '=' : different 'const' qualifiers
   Generating code
   Finished generating code
+Buzz_Light_Year.obj : warning LNK4205: 'D:\Files\Development\Projects\Visual Studio 2013\Projects\Graphics_Buzz_LightYear\Graphics_Buzz_LightYear\Release\vc120.pdb' is missing current debugging information for referencing module; linking object as if no debug info
+GLTexture.obj : warning LNK4205: 'D:\Files\Development\Projects\Visual Studio 2013\Projects\Graphics_Buzz_LightYear\Graphics_Buzz_LightYear\Release\vc120.pdb' is missing current debugging information for referencing module; linking object as if no debug info
+Model_3DS.obj : warning LNK4205: 'D:\Files\Development\Projects\Visual Studio 2013\Projects\Graphics_Buzz_LightYear\Graphics_Buzz_LightYear\Release\vc120.pdb' is missing current debugging information for referencing module; linking object as if no debug info
   Graphics_Buzz_LightYear.vcxproj -> D:\Files\Development\Projects\Visual Studio 2013\Projects\Graphics_Buzz_LightYear\Graphics_Buzz_LightYear\Release\Graphics_Buzz_LightYear.exe

@@ -5,37 +5,11 @@
 #include <Libraries\assmip\include\cimport.h>
 #include <Libraries\assmip\include\scene.h>
 #include <Libraries\assmip\include\postprocess.h>
-
-
-const struct aiScene * scene = NULL;
-
-GLuint scene_list = 0;
-struct aiVector3D scene_min, scene_max, scene_center; // not used
-
-/* current rotation angle */
-static float angle = 0.f;
-float x_axis = 0.f, y_axis = 0.f, z_axis = 0.f;
 #define aisgl_min(x,y) (x<y?x:y)
 #define aisgl_max(x,y) (y>x?y:x)
 
 /* ---------------------------------------------------------------------------- */
-void reshape(int width, int height)
-{
-	const double aspectRatio = (float)width / height, fieldOfView = 45.0;
-
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(fieldOfView, aspectRatio,
-		1.0, 1000.0);  /* Znear and Zfar */
-	glViewport(0, 0, width, height);
-}
-
-/* ---------------------------------------------------------------------------- */
-void get_bounding_box_for_node(const struct aiNode* nd,
-struct aiVector3D* min,
-struct aiVector3D* max,
-struct aiMatrix4x4* trafo
-	){
+void get_bounding_box_for_node(const struct aiScene *scene,const struct aiNode* nd,struct aiVector3D* min,struct aiVector3D* max,struct aiMatrix4x4* trafo){
 	struct aiMatrix4x4 prev;
 	unsigned int n = 0, t;
 
@@ -60,22 +34,20 @@ struct aiMatrix4x4* trafo
 	}
 
 	for (n = 0; n < nd->mNumChildren; ++n) {
-		get_bounding_box_for_node(nd->mChildren[n], min, max, trafo);
+		get_bounding_box_for_node(scene,nd->mChildren[n], min, max, trafo);
 	}
 	*trafo = prev;
 }
-
 /* ---------------------------------------------------------------------------- */
-void get_bounding_box(struct aiVector3D* min, struct aiVector3D* max)
+void get_bounding_box(const struct aiScene *scene, struct aiVector3D* min, struct aiVector3D* max)
 {
 	struct aiMatrix4x4 trafo;
 	aiIdentityMatrix4(&trafo);
 
 	min->x = min->y = min->z = 1e10f;
 	max->x = max->y = max->z = -1e10f;
-	get_bounding_box_for_node(scene->mRootNode, min, max, &trafo);
+	get_bounding_box_for_node(scene,scene->mRootNode, min, max, &trafo);
 }
-
 /* ---------------------------------------------------------------------------- */
 void color4_to_float4(const struct aiColor4D *c, float f[4])
 {
@@ -84,7 +56,6 @@ void color4_to_float4(const struct aiColor4D *c, float f[4])
 	f[2] = c->b;
 	f[3] = c->a;
 }
-
 /* ---------------------------------------------------------------------------- */
 void set_float4(float f[4], float a, float b, float c, float d)
 {
@@ -93,7 +64,6 @@ void set_float4(float f[4], float a, float b, float c, float d)
 	f[2] = c;
 	f[3] = d;
 }
-
 /* ---------------------------------------------------------------------------- */
 void apply_material(const struct aiMaterial *mtl)
 {
@@ -159,7 +129,6 @@ void apply_material(const struct aiMaterial *mtl)
 	//else
 	//	glEnable(GL_CULL_FACE);
 }
-
 /* ---------------------------------------------------------------------------- */
 void recursive_render(const struct aiScene *sc, const struct aiNode* nd)
 {
@@ -219,86 +188,6 @@ void recursive_render(const struct aiScene *sc, const struct aiNode* nd)
 
 	glPopMatrix();
 }
-
-/* ---------------------------------------------------------------------------- */
-void do_motion(void)
-{
-	static GLint prev_time = 0;
-	static GLint prev_fps_time = 0;
-	static int frames = 0;
-
-	int time = glutGet(GLUT_ELAPSED_TIME);
-	//angle += (time-prev_time)*0.01;
-	prev_time = time;
-
-	frames += 1;
-	if ((time - prev_fps_time) > 1000) /* update every seconds */
-	{
-		int current_fps = frames * 1000 / (time - prev_fps_time);
-		printf("%d fps\n", current_fps);
-		frames = 0;
-		prev_fps_time = time;
-	}
-
-
-	glutPostRedisplay();
-}
-/* ---------------------------------------------------------------------------- */
-
-//void display(void)
-//{
-//	float tmp;
-//
-//	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-//
-//	/*
-//	glClearColor(0.0, 0.0, 0.0, 0.0);
-//
-//	glMatrixMode(GL_PROJECTION);
-//
-//	glLoadIdentity();
-//
-//	gluPerspective(100.0, 900.0 / 600.0, 0.1, 250);
-//	*/
-//	//*******************************************************************************************//
-//	// fovy:			Angle between the bottom and top of the projectors, in degrees.			 //
-//	// aspectRatio:		Ratio of width to height of the clipping plane.							 //
-//	// zNear and zFar:	Specify the front and back clipping planes distances from camera.		 //
-//	//*******************************************************************************************//
-//
-//	glMatrixMode(GL_MODELVIEW);
-//
-//	glLoadIdentity();
-//	//gluLookAt(1.f, 1.f, 1.f, 0.f, 0.f, 0.f, 0.f, 1.f, 0.f);
-//	gluLookAt(0.f, 0.f, 3.f, 0.f, 0.f, -5.f, 0.f, 1.f, 0.f);
-//	glClear(GL_COLOR_BUFFER_BIT);
-//	/*
-//	glPushMatrix();
-//	glBegin(GL_LINES);
-//	glColor3d(1, 0, 00);
-//	glVertex3d(-100, 0, 0);
-//	glVertex3d(100, 0, 0);
-//	glEnd();
-//	glBegin(GL_LINES);
-//	glColor3d(0, 0, 1);
-//	glVertex3d(0, -100, 0);
-//	glVertex3d(0, 100, 0);
-//	glEnd();
-//	glBegin(GL_LINES);
-//	glColor3d(0, 1, 0);
-//	glVertex3d(0, 0, -100);
-//	glVertex3d(0, 0, 100);
-//	glEnd();
-//	glPopMatrix();
-//	*/
-//	//draw_buzz();
-//	//draw_robotito();
-//
-//	glutSwapBuffers();
-//	do_motion();
-//}
-
-
 /* ---------------------------------------------------------------------------- */
 struct aiScene * loadasset(const char* path)
 {
@@ -310,106 +199,4 @@ struct aiScene * loadasset(const char* path)
 	exit(-1);
 	return NULL;
 }
-
-void keyboard(unsigned char key, int x, int y){
-	float d = 0.01;
-	switch (key) {
-	case 'w':
-		y_axis += d;
-		break;
-	case 's':
-		y_axis -= d;
-		break;
-	case 'a':
-		x_axis -= d;
-		break;
-	case 'd':
-		x_axis += d;
-		break;
-	case 'z':
-		z_axis -= d;
-		break;
-	case 'x':
-		z_axis += d;
-
-		break;
-	case 'r':
-		angle += 10;
-		break;
-
-	case 'c':
-		scene_list = 0;
-		break;
-
-	case 27:
-		exit(EXIT_SUCCESS); break;
-
-	}
-	glutPostRedisplay();
-}
 /* ---------------------------------------------------------------------------- */
-/*
-int main(int argc, char **argv)
-{
-struct aiLogStream stream;
-
-glutInitWindowSize(900, 600);
-glutInitWindowPosition(100, 100);
-glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
-glutInit(&argc, argv);
-
-glutCreateWindow("OpenGL sample");
-glutDisplayFunc(display);
-glutReshapeFunc(reshape);
-
-glutIdleFunc(Anim);
-stream = aiGetPredefinedLogStream(aiDefaultLogStream_STDOUT, NULL);
-aiAttachLogStream(&stream);
-
-// ... same procedure, but this stream now writes the log messages to assimp_log.txt
-stream = aiGetPredefinedLogStream(aiDefaultLogStream_FILE, "assimp_log.txt");
-aiAttachLogStream(&stream);
-
-//-----------------------------Buzz_Model-----------------------------------
-buzz_body = loadasset("../Models/buzz_model/Buzz_Body.obj");
-buzz_left_elbow = loadasset("../Models/buzz_model/Buzz_Left_Elbow.obj");
-buzz_right_elbow = loadasset("../Models/buzz_model/Buzz_Right_Elbow.obj");
-buzz_left_leg = loadasset("../Models/buzz_model/Buzz_Left_Leg.obj");
-buzz_right_leg = loadasset("../Models/buzz_model/Buzz_Right_Leg.obj");
-//--------------------------------------------------------------------------
-
-//-----------------------------Enemies_Models------------------------------- More To Be Added
-robotito = loadasset("../Models/enemy_model/robotito.obj");
-//--------------------------------------------------------------------------
-
-glClearColor(0.1f, 0.1f, 0.1f, 1.f);
-
-glEnable(GL_LIGHTING);
-glEnable(GL_LIGHT0);
-
-glEnable(GL_DEPTH_TEST);
-glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
-glEnable(GL_NORMALIZE);
-
-
-if (getenv("MODEL_IS_BROKEN"))
-glFrontFace(GL_CW);
-
-glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE);
-glShadeModel(GL_SMOOTH);
-
-glutGet(GLUT_ELAPSED_TIME);
-glutKeyboardFunc(keyboard);
-glutMainLoop();
-
-aiReleaseImport(buzz_body);
-aiReleaseImport(buzz_left_elbow);
-aiReleaseImport(buzz_right_elbow);
-aiReleaseImport(buzz_left_leg);
-aiReleaseImport(buzz_right_leg);
-
-
-aiDetachAllLogStreams();
-return 0;
-}
-*/
